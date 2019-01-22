@@ -13,7 +13,7 @@ phases:
     # pre_build:
   # build:
   # post_build:
-artifacts: []
+artifacts: {}
 #  files:
 #    - nginx-1.14.2.zip
 #    - "maxmind-*.zip"
