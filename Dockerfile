@@ -16,6 +16,7 @@ RUN yum -q -y updateinfo \
   && yum -y -q install epel-release \
   && yum -q -y install make gdbm-devel gcc zip wget bzip2-devel \
     zlib-devel openssl-devel ncurses-devel sqlite-devel tk-devel \
-    xz-devel expat-devel libffi-devel readline-devel \
+    xz-devel expat-devel libffi-devel readline-devel python python-pip \
+  && pip install -q --no-cache-dir awscli \
   && yum -q -y clean all \
   && rm -rf /var/cache/yum

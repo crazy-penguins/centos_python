@@ -18,6 +18,6 @@ else
     pushd "${pdir}"
 fi
 printf '\e[32mbuilding!\e[0m\n'
-./configure && make
+./configure --enable-optimizations && make
 popd
 popd
