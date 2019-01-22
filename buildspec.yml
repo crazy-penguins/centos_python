@@ -4,20 +4,23 @@ phases:
   install:
     commands:
       - "python -m platform"
+      - "aws --version"
       - "cat /etc/docker.conf"
+      - "pip -q install boto3 six"
   build:
     commands:
       - "export version=3.6.7"
-      - |
-        cd "/work" \
-          && ./centos_python.sh "${version}" \
-          && cd /u/python-${version} \
-          && zip -q -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip .
+      - "python copy_artifacts.py"
+#      - |
+#        cd "/work" \
+#          && ./centos_python.sh "${version}" \
+#          && cd /u/python-${version} \
+#          && zip -q -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip .
     # pre_build:
   # build:
   # post_build:
-artifacts:
-  files:
-    - "python-3.6.7.zip"
+artifacts: {}
+#  files:
+#    - "python-3.6.7.zip"
 #    - nginx-1.14.2.zip
 #    - "maxmind-*.zip"
