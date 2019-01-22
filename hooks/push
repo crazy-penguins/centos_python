@@ -1,11 +1,14 @@
 #!/bin/bash
 version=$(cat "VERSION")
 name=$(cat "NAME")
-image_url="https://index.docker.io/v1/repositories/${name}/tags/${version}"
-version_exists=$(curl --silent -f -lSL ${image_url} >/dev/null)
-if [[ ! version_exists ]] ; then
+function image_exists() {
+    image_url="https://index.docker.io/v1/repositories/${name}/tags/${version}"
+    echo "checking ${image_url}"
+    curl --silent -f -lSL ${image_url} >/dev/null
+}
+if image_exists ; then
+    echo "nothing to push, version already exists."
+else
     docker push "${name}:${version}"
     docker push "${name}:latest"
-else
-    echo "nothing to push, version already exists."
 fi
