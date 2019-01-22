@@ -6,5 +6,5 @@ version_exists=$(curl --silent -f -lSL ${image_url} >/dev/null)
 if [[ ! version_exists ]] ; then
     docker build -f "${DOCKERFILE_PATH}" -t "${name}:${version}" -t "${name}:latest" .
 else
-    echo "nothing to be done."
+    echo "nothing to build, version already exists."
 fi
