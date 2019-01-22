@@ -1,4 +1,10 @@
 #!/bin/bash
 version=$(cat "VERSION")
 name=$(cat "NAME")
-docker build -f $DOCKERFILE_PATH -t "${name}:${version}" -t "${name}:latest" .
+image_url="https://index.docker.io/v1/repositories/${name}/tags/${version}"
+version_exists=$(curl --silent -f -lSL ${image_url} >/dev/null)
+if [[ ! version_exists ]] ; then
+    docker build -f "${DOCKERFILE_PATH}" -t "${name}:${version}" -t "${name}:latest" .
+else
+    echo "nothing to be done."
+fi
