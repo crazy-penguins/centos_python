@@ -11,7 +11,7 @@ phases:
       - |
         cd "/work" \
           && ./centos_python.sh "${version}" \
-          && cd /u/python-${version}
+          && cd /u/python-${version} \
           && zip -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip .
     # pre_build:
   # build:
