@@ -8,7 +8,7 @@ phases:
       - "cat /etc/docker.conf"
   build:
     commands:
-      - "export version=3.6.7"
+      - "export version=2.7.15"
       - |
         cd "/work" \
           && ./centos_python.sh "${version}" \

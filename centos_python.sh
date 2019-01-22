@@ -6,7 +6,7 @@ pushd /u/downloads
 filename="/u/downloads/python-${version}.tgz"
 if [[ ! -f "${filename}" ]] ; then
     printf '\e[32mdownloading source bundle\e[0m\n'
-    wget "https://www.python.org/ftp/python/${version}/Python-${version}.tgz" -O "${filename}" ;
+    wget -q "https://www.python.org/ftp/python/${version}/Python-${version}.tgz" -O "${filename}" ;
 fi
 pdir="/u/python-${version}"
 if [[ ! -d "${pdir}" ]] ; then
