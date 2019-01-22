@@ -13,11 +13,6 @@ phases:
         cd "/work" \
           && ./centos_python.sh "${version}" \
           && cd /u/python-${version} \
-          && zip -q -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip .
-    # pre_build:
-  # post_build:
-artifacts:
-  files:
-    - "python-*.zip"
-#    - nginx-1.14.2.zip
-#    - "maxmind-*.zip"
+          && zip -q -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip . \
+          && aws s3 cp ${CODEBUILD_SRC_DIR}/python-${version}.zip s3://${Bucket}/
+artifacts: {}
