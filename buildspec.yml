@@ -1,0 +1,19 @@
+---
+version: 0.2
+phases:
+  install:
+    commands:
+      - "python -m platform"
+      - "cat /etc/docker.conf"
+  build:
+    commands:
+      - "export version=2.7.15"
+      - cd "/work"
+      - aws s3 ls s3://dbuy-deploy/centos/
+    # pre_build:
+  # build:
+  # post_build:
+artifacts: []
+#  files:
+#    - nginx-1.14.2.zip
+#    - "maxmind-*.zip"
