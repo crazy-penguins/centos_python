@@ -9,7 +9,14 @@ phases:
     commands:
       - "export version=2.7.15"
       - cd "/work"
-      - aws s3 ls s3://dbuy-deploy/centos/
+      - ./centos_python.sh 2.7.15
+#      - ./centos_python.sh 3.6.7
+      - cd /u/python-2.7.15
+      - zip -r -m /work/python-2.7.15.zip .
+#      - cd /u/python-3.6.7
+#      - zip -r -m /work/python-3.6.7.zip .
+      - cd /work
+      - ls -la
     # pre_build:
   # build:
   # post_build:
