@@ -7,20 +7,17 @@ phases:
       - "cat /etc/docker.conf"
   build:
     commands:
-      - "export version=2.7.15"
-      - cd "/work"
-      - ./centos_python.sh 2.7.15
-#      - ./centos_python.sh 3.6.7
-      - cd /u/python-2.7.15
-      - zip -r -m /work/python-2.7.15.zip .
-#      - cd /u/python-3.6.7
-#      - zip -r -m /work/python-3.6.7.zip .
-      - cd /work
-      - ls -la
+      - "export version=3.6.7"
+      - |
+        cd "/work" \
+          && ./centos_python.sh "${version}" \
+          && cd /u/python-${version}
+          && zip -r -m ${CODEBUILD_SRC_DIR}/python-${version}.zip .
     # pre_build:
   # build:
   # post_build:
-artifacts: {}
-#  files:
+artifacts:
+  files:
+    - "python-3.6.7.zip"
 #    - nginx-1.14.2.zip
 #    - "maxmind-*.zip"
